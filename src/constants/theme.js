@@ -10,13 +10,21 @@ export const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 export const COLORS = {
     white: '#ffffff',
-    offwhite: '#F3F3F3',
-    black: "#000000",
-    primary: "#6A9C2D",
-    secondary: "#59000E",
-    orange: "#FF5E00",
+    black: "#000",
+    primary: "#063A4F",
+    primary2: "#40196D",
+    sky: "#F1FAF9",
+    orange: "#ff7040",
+    secondary: "#00caf2",
+    green: "#47cc49",
+    green2: "#038654",
+    gray: '#EFF2F7',
     chocolate: '#5d5c6c',
     chocolateBackground: '#CECFCD',
+    grey2: '#f6f5fa',
+    grey3: '#efefef',
+    gray4: '#B4B5B5',
+    red: 'red',
 };
 
 export const SIZES = {

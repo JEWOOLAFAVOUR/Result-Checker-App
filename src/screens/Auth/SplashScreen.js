@@ -1,11 +1,19 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
-import { COLORS, SIZES, images } from '../../constants'
+import React, { useEffect } from 'react'
+import { COLORS, SIZES, images, FONTS } from '../../constants'
+import { useNavigation } from '@react-navigation/native'
 
 const SplashScreen = () => {
+    const navigation = useNavigation();
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.navigate('Login')
+        }, 2000)
+    }, [])
     return (
         <View style={styles.page}>
-            <Image source={images.logo} style={{ height: SIZES.h1 * 5, width: SIZES.h1 * 4 }} />
+            <Image source={images.logo} style={{ height: SIZES.h1 * 7, width: SIZES.h1 * 6 }} />
+            <Text style={{ ...FONTS.h3, color: COLORS.black, marginTop: SIZES.h1 }}>Lautech Result Checker</Text>
         </View>
     )
 }

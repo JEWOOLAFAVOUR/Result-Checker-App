@@ -1,24 +1,31 @@
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { COLORS, FONTS, icons, SIZES } from '../../constants'
 
-const FormInput = ({ placeholder, keyboardType, eyeoff, value, setValue, }) => {
-    const [hide, setHide] = useState(false);
+const FormInput = ({ title, placeholder, iconName, value, setValue, keyboardType, eyeoff }) => {
+    const [hidden, setHidden] = useState(true)
     return (
-        <View style={styles.container}>
-            <TextInput
-                placeholder={placeholder}
-                style={{ ...FONTS.body3, color: "#040B1B", flex: 1 }}
-                keyboardType={keyboardType}
-                value={value}
-                // defaultValue='ssssjj'
-                onChangeText={setValue}
-            />
-            {eyeoff &&
-                <TouchableOpacity onPress={() => setHide(!hide)}>
-                    <Image source={hide ? icons.padlock : icons.padlock} style={{ height: SIZES.h2, width: SIZES.h2 }} />
-                </TouchableOpacity>
-            }
+        <View style={{ marginBottom: SIZES.h5 }}>
+            <Text style={{ ...FONTS.body4, color: COLORS.black, marginBottom: SIZES.base * 0.5, fontFamily: 'Montserrat-Medium' }}>{title}</Text>
+            <View style={styles.container}>
+                <Image source={iconName || icons.about} style={{ height: SIZES.h2, width: SIZES.h2, tintColor: COLORS.chocolate }} />
+                <TextInput
+                    placeholder={placeholder}
+                    placeholderTextColor={'#9A9FA3'}
+                    value={value}
+                    // onChangeText={data => setValue({ ...value, email: data })}
+                    onChangeText={setValue}
+                    keyboardType={keyboardType}
+                    secureTextEntry={eyeoff ? hidden : null}
+                    style={{ flex: 1, color: COLORS.black, ...FONTS.body4, marginLeft: SIZES.base }}
+                />
+                {
+                    eyeoff &&
+                    <TouchableOpacity onPress={() => setHidden(!hidden)}>
+                        <Image source={hidden ? icons.eyeclose : icons.eye} style={{ height: SIZES.h2, width: SIZES.h2 }} />
+                    </TouchableOpacity>
+                }
+            </View>
         </View>
     )
 }
@@ -27,17 +34,13 @@ export default FormInput
 
 const styles = StyleSheet.create({
     container: {
-        height: SIZES.h1 * 1.7,
-        // borderWidth: 0.8,
-        backgroundColor: COLORS.offwhite,
-        borderRadius: SIZES.base * 0.8,
-        marginTop: SIZES.base * 0.7,
-        paddingLeft: SIZES.h3,
-        paddingRight: SIZES.base * 1.1,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: SIZES.h5,
-        borderColor: "#F3F7FF",
+        height: SIZES.h1 * 1.6,
+        borderWidth: 1,
+        paddingHorizontal: SIZES.h5,
+        borderRadius: SIZES.base * 0.8,
+        borderColor: COLORS.grey2,
+        backgroundColor: COLORS.grey2
     },
 })
