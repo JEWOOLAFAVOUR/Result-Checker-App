@@ -1,10 +1,19 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native'
 import React from 'react'
 import { COLORS, FONTS, SIZES, icons, images } from '../../../constants'
 import { useNavigation } from '@react-navigation/native'
 
 const ResultScreen = () => {
     const navigation = useNavigation();
+    const RenderFooter = () => {
+        return (
+            <View>
+                <View style={styles.cgpaCtn}>
+                    <Text style={{ ...FONTS.body3, color: COLORS.black, fontWeight: 'bold' }}>CGPA: 3.00</Text>
+                </View>
+            </View>
+        )
+    }
     return (
         <View style={styles.page}>
             {/* TOP */}
@@ -32,6 +41,36 @@ const ResultScreen = () => {
                     <Text style={{ ...FONTS.body3, color: COLORS.black }}>FIRST</Text>
                 </View>
             </View>
+
+            {/* COURSE DETAILS  */}
+            <View style={styles.bigCtn}>
+                <View style={styles.titleCtn}>
+                    <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Course Code</Text>
+                    <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Units</Text>
+                    <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Score</Text>
+                    <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Grade</Text>
+                    <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Points</Text>
+                </View>
+
+                <FlatList
+                    data={['', '', '', '', '', '', '',]}
+                    ListFooterComponent={RenderFooter}
+                    renderItem={({ item }) => {
+                        return (
+                            <View>
+                                <View style={styles.container}>
+                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>MTH 101</Text>
+                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>2.0</Text>
+                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>76.6</Text>
+                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>A</Text>
+                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>7.0</Text>
+                                </View>
+                                <View style={{ height: 1, backgroundColor: COLORS.black, marginBottom: SIZES.base }} />
+                            </View>
+                        )
+                    }}
+                />
+            </View>
         </View>
     )
 }
@@ -55,5 +94,41 @@ const styles = StyleSheet.create({
         borderColor: COLORS.chocolateBackground,
         alignItems: 'center',
         justifyContent: 'space-between',
+    },
+    bigCtn: {
+        // height: SIZES.height * 0.5,
+        paddingBottom: SIZES.h3,
+        borderWidth: 1,
+        marginTop: SIZES.h1,
+        borderRadius: SIZES.base,
+        // paddingTop: SIZES.h5,
+    },
+    titleCtn: {
+        borderTopLeftRadius: SIZES.base,
+        borderTopRightRadius: SIZES.base,
+        backgroundColor: COLORS.primary,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: SIZES.base,
+        paddingVertical: SIZES.h5,
+        marginBottom: SIZES.h4,
+    },
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: SIZES.h4,
+        marginBottom: SIZES.h5,
+    },
+    cgpaCtn: {
+        height: SIZES.h1 * 1.2,
+        width: SIZES.h1 * 4,
+        borderRadius: SIZES.h2,
+        backgroundColor: COLORS.gray,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginVertical: SIZES.h5,
     },
 })
