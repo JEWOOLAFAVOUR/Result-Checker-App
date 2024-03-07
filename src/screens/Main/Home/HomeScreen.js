@@ -3,8 +3,10 @@ import React from 'react'
 import { COLORS, FONTS, SIZES, icons, images } from '../../../constants'
 import FormInput from '../../../components/Input/FormInput'
 import FormButton from '../../../components/Button/FormButton'
+import { useNavigation } from '@react-navigation/native'
 
 const HomeScreen = () => {
+    const navigation = useNavigation();
     return (
         <View style={styles.page}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -32,7 +34,7 @@ const HomeScreen = () => {
                         <Text style={{ ...FONTS.body4, color: COLORS.black, marginLeft: SIZES.base * 0.6 }}>2nd Semester</Text>
                     </TouchableOpacity>
                 </View>
-                <FormButton title="CHECK RESULT" />
+                <FormButton title="CHECK RESULT" onPress={() => navigation.navigate("ResultScreen")} />
             </View>
         </View>
     )
