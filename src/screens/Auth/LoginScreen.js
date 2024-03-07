@@ -3,8 +3,10 @@ import React from 'react'
 import { COLORS, SIZES, images, FONTS, icons } from '../../constants'
 import FormInput from '../../components/Input/FormInput'
 import FormButton from '../../components/Button/FormButton'
+import { useNavigation } from '@react-navigation/native'
 
 const LoginScreen = () => {
+    const navigation = useNavigation();
     return (
         <View style={styles.page}>
             <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: SIZES.h1 }}>
@@ -18,7 +20,7 @@ const LoginScreen = () => {
                 <FormInput title="Matric Number" iconName={icons.mail} placeholder="Matric Number" />
                 <FormInput title="Password" iconName={icons.padlock} placeholder="Password" />
             </View>
-            <FormButton title="LOGIN" />
+            <FormButton title="LOGIN" onPress={() => navigation.navigate("Main", { screen: "Home" })} />
 
             <View style={{ marginTop: SIZES.h1 * 1.4, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ ...FONTS.body4, color: COLORS.primary }}>School Portal?</Text>
