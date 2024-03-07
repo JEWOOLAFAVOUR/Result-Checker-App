@@ -1,5 +1,4 @@
 import axios from "axios";
-import reduxStore from "../redux/store";
 import client from "./client";
 
 const makeApiRequest = async (method, endpoint, data) => {
@@ -20,31 +19,8 @@ const makeApiRequest = async (method, endpoint, data) => {
 };
 
 
-export const registerUser = async (data) => {
-    const response = await makeApiRequest('POST', '/auth/register', data);
-    return response;
-};
-
 export const loginUser = async (data) => {
-    console.log('lll', data)
-    const response = await makeApiRequest('POST', '/auth/login', data);
-    return response;
-};
-
-export const verifyEmail = async (data) => {
-    console.log('lll', data)
-    const response = await makeApiRequest('POST', '/auth/verify-email-account', data);
-    return response;
-};
-
-export const requestEmail = async (data) => {
-    console.log('lll', data)
-    const response = await makeApiRequest('POST', '/auth/request-email-verification', data);
-    return response;
-};
-
-export const forgetPassword = async (data) => {
-    console.log('lll', data)
-    const response = await makeApiRequest('POST', '/auth/request-reset-password', data);
+    console.log(';;;;;;;;;;;;;;')
+    const response = await makeApiRequest('POST', '/user/login-user', data);
     return response;
 };
