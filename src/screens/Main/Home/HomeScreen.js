@@ -1,14 +1,40 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { COLORS, FONTS, SIZES, icons, images } from '../../../constants'
 import FormInput from '../../../components/Input/FormInput'
 import FormButton from '../../../components/Button/FormButton'
 import { useNavigation } from '@react-navigation/native'
+import { checkResult } from '../../../api/auth'
+import { Roller, sendToast } from '../../../components/Template/utilis'
 
 const HomeScreen = () => {
     const navigation = useNavigation();
+    const [load, setLoad] = useState(false)
+
+    const [matricNumber, setMatricNumber] = useState('')
+
+
+
+    const handleCheckResult = async () => {
+        const body = { matricNumber, semester: "1st Semester" }
+        if (!matricNumber) return sendToast('error', "Matric Number can't be empty")
+        setLoad(true)
+        const { data, status } = await checkResult(body)
+        setLoad(false)
+        console.log('response fromcheck result', data)
+        if (data?.success === true) {
+            sendToast('success', data?.message)
+            navigation.navigate("ResultScreen", { data: data?.data })
+        } else {
+            sendToast('error', data?.message)
+        }
+    }
+
+
     return (
         <View style={styles.page}>
+            {load && <Roller visible={true} />}
+
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View>
                     <Text style={{ ...FONTS.body2, color: COLORS.black }}>Welcome</Text>
@@ -19,8 +45,14 @@ const HomeScreen = () => {
             {/* RESULT CHECKER */}
             <View style={{ marginTop: SIZES.h2 }}>
                 <Text style={{ ...FONTS.h2, textAlign: 'center', marginBottom: SIZES.h3, color: COLORS.black }}>Result Checker</Text>
-                <FormInput iconName={icons.mail} title="Matric Number" placeholder="Enter your matric number" keyboardType="numeric" />
-                <FormInput iconName={icons.mail} title="Exam Year" placeholder="Enter your exam year" keyboardType="numeric" />
+                <FormInput iconName={icons.mail}
+                    title="Matric Number"
+                    placeholder="Enter your matric number"
+                    keyboardType="numeric"
+                    value={matricNumber}
+                    setValue={setMatricNumber}
+                />
+                {/* <FormInput iconName={icons.mail} title="Exam Year" placeholder="Enter your exam year" keyboardType="numeric" /> */}
             </View>
             {/* BUTTON */}
             <View style={{ marginTop: SIZES.h1 * 1.2 }}>
@@ -34,7 +66,7 @@ const HomeScreen = () => {
                         <Text style={{ ...FONTS.body4, color: COLORS.black, marginLeft: SIZES.base * 0.6 }}>2nd Semester</Text>
                     </TouchableOpacity>
                 </View>
-                <FormButton title="CHECK RESULT" onPress={() => navigation.navigate("ResultScreen")} />
+                <FormButton title="CHECK RESULT" onPress={() => handleCheckResult()} />
             </View>
         </View>
     )

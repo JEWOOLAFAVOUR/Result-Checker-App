@@ -24,3 +24,8 @@ export const loginUser = async (data) => {
     const response = await makeApiRequest('POST', '/user/login-user', data);
     return response;
 };
+
+export const checkResult = async (data) => {
+    const response = await makeApiRequest('POST', '/user/check-result', data);
+    return response;
+};

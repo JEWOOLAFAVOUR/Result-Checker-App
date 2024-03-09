@@ -62,114 +62,114 @@ export const SIZES = {
 
 export const FONTS = {
     navTitle: {
-        fontFamily: 'Urbanist-Bold', fontSize: SIZES.navTitle
+        fontFamily: 'OpenSans-Bold', fontSize: SIZES.navTitle
     },
     largeTitleBold: {
-        fontFamily: 'Urbanist-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: SIZES.h1 * 1.1,
         lineHeight: screenHeight * 0.05,
     },
     h1: {
-        fontFamily: 'Urbanist-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: SIZES.h1,
         lineHeight: screenHeight * 0.05,
     },
     h1a: {
-        fontFamily: 'Urbanist-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: SIZES.h1 * 0.9,
         lineHeight: screenHeight * 0.05,
     },
     h2: {
-        fontFamily: 'Urbanist-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: SIZES.h2,
         lineHeight: screenHeight * 0.0375,
     },
     h3: {
-        fontFamily: 'Urbanist-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: SIZES.h3,
         lineHeight: screenHeight * 0.025,
     },
     h3a: {
-        fontFamily: 'Urbanist-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: SIZES.h3a,
         lineHeight: screenHeight * 0.025,
     },
     h4: {
-        fontFamily: 'Urbanist-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: SIZES.h4,
         lineHeight: screenHeight * 0.025,
     },
     h5: {
-        fontFamily: 'Urbanist-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: SIZES.h5,
         lineHeight: screenHeight * 0.025,
     },
     body: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body1 * 1.2,
         lineHeight: 39,
     },
     body1: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body1,
         lineHeight: 36,
     },
     body2: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body2,
         lineHeight: 30,
     },
     body2a: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body2 * 0.95,
         lineHeight: 30,
     },
     body2b: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body2 * 0.935,
         lineHeight: 30,
     },
     body2c: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body2 * 1.3,
         lineHeight: 30,
     },
     body3: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body3 * 1.05,
         lineHeight: 22,
     },
     body3a: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body3a,
         lineHeight: 22,
     },
     body3b: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body3b,
         lineHeight: 22,
     }, body3c: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body3a * 0.88,
         lineHeight: 22,
     },
     body4: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body4,
         lineHeight: 22,
     },
     body4b: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body4 * 0.9,
         lineHeight: 22,
     },
     body5: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body5,
         lineHeight: 22,
     },
     body6: {
-        fontFamily: 'Urbanist-Regular',
+        fontFamily: 'OpenSans-Medium',
         fontSize: SIZES.body6,
         lineHeight: 22,
     },

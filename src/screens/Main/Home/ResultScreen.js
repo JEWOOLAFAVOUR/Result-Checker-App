@@ -3,7 +3,10 @@ import React from 'react'
 import { COLORS, FONTS, SIZES, icons, images } from '../../../constants'
 import { useNavigation } from '@react-navigation/native'
 
-const ResultScreen = () => {
+const ResultScreen = ({ route }) => {
+    console.log('route coming', route?.params)
+
+    const data = route?.params?.data;
     const navigation = useNavigation();
     const RenderFooter = () => {
         return (
@@ -34,11 +37,11 @@ const ResultScreen = () => {
                     <Text style={{ ...FONTS.body3, color: COLORS.black }}>Semester</Text>
                 </View>
                 <View style={{ width: SIZES.width * 0.42, }}>
-                    <Text style={{ ...FONTS.body3, color: COLORS.black, marginBottom: SIZES.base }}>205534</Text>
-                    <Text style={{ ...FONTS.body3, color: COLORS.black, marginBottom: SIZES.base }}>JEWOOLA FAVOUR</Text>
-                    <Text style={{ ...FONTS.body3, color: COLORS.black, marginBottom: SIZES.base }}>2023/2024</Text>
-                    <Text style={{ ...FONTS.body3, color: COLORS.black, marginBottom: SIZES.base }}>300 LEVEL</Text>
-                    <Text style={{ ...FONTS.body3, color: COLORS.black }}>FIRST</Text>
+                    <Text style={{ ...FONTS.body3, color: COLORS.black, marginBottom: SIZES.base }}>{data?.matricNumber}</Text>
+                    <Text style={{ ...FONTS.body3, color: COLORS.black, marginBottom: SIZES.base }}>{data?.studentName}</Text>
+                    <Text style={{ ...FONTS.body3, color: COLORS.black, marginBottom: SIZES.base }}>{data?.session}</Text>
+                    <Text style={{ ...FONTS.body3, color: COLORS.black, marginBottom: SIZES.base }}>{data?.level || '300 LEVEL'}</Text>
+                    <Text style={{ ...FONTS.body3, color: COLORS.black }}>{data?.semester}</Text>
                 </View>
             </View>
 
@@ -46,24 +49,24 @@ const ResultScreen = () => {
             <View style={styles.bigCtn}>
                 <View style={styles.titleCtn}>
                     <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Course Code</Text>
-                    <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Units</Text>
+                    {/* <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Units</Text> */}
                     <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Score</Text>
                     <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Grade</Text>
-                    <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Points</Text>
+                    {/* <Text style={{ color: COLORS.white, ...FONTS.body4, }}>Points</Text> */}
                 </View>
 
                 <FlatList
-                    data={['', '', '', '', '', '', '',]}
+                    data={data?.courses}
                     ListFooterComponent={RenderFooter}
                     renderItem={({ item }) => {
                         return (
                             <View>
                                 <View style={styles.container}>
-                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>MTH 101</Text>
-                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>2.0</Text>
-                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>76.6</Text>
-                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>A</Text>
-                                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>7.0</Text>
+                                    <Text style={{ ...FONTS.body5, color: COLORS.black, maxWidth: '35%', }}>{item?.courseName}</Text>
+                                    {/* <Text style={{ ...FONTS.body5, color: COLORS.black }}>2.0</Text> */}
+                                    <Text style={{ ...FONTS.body5, color: COLORS.black, }}>{item.courseScore}</Text>
+                                    <Text style={{ ...FONTS.body5, color: COLORS.black }}>{item?.grade}</Text>
+                                    {/* <Text style={{ ...FONTS.body5, color: COLORS.black }}>7.0</Text> */}
                                 </View>
                                 <View style={{ height: 1, backgroundColor: COLORS.black, marginBottom: SIZES.base }} />
                             </View>
