@@ -5,11 +5,9 @@ export const makeSecurity = (type, data) => {
     const errors = [];
 
     if (type === 'login') {
-        const { email, password } = data;
-        if (!email || email.trim() === "") {
-            errors.push("Enter a Valid Email Address");
-        } else if (!emailPattern.test(email)) {
-            errors.push("Enter a Valid Email Address");
+        const { matricNumber, password } = data;
+        if (!matricNumber || matricNumber.trim() === "") {
+            errors.push("Enter a Valid matricNumber Address");
         }
 
         if (!password || password.trim() === "") {

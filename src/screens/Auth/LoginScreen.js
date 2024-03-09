@@ -5,6 +5,8 @@ import FormInput from '../../components/Input/FormInput'
 import FormButton from '../../components/Button/FormButton'
 import { useNavigation } from '@react-navigation/native'
 import { loginUser } from '../../api/auth'
+import { makeSecurity } from '../../components/Template/security'
+import { sendToast } from '../../components/Template/utilis'
 
 const LoginScreen = () => {
     const navigation = useNavigation();
@@ -15,11 +17,25 @@ const LoginScreen = () => {
     const handleSubmit = async () => {
         console.log('lllllllllllllllllll')
         const body = { matricNumber, password }
-        const { data, status } = await loginUser(body)
-        console.log('response from login', data)
 
-        if (data.success === true) {
-            navigation.navigate("Main", { screen: "Home" })
+        const securityErrors = makeSecurity('login', body);
+
+        if (securityErrors.length > 0) {
+            sendToast('error', securityErrors[0]);
+            console.log('erroo', securityErrors[0]);
+            return;
+        }
+        try {
+
+            const { data, status } = await loginUser(body)
+            console.log('response from login', data)
+
+            if (data.success === true) {
+                sendToast('success', data?.message)
+                navigation.navigate("Main", { screen: "Home" })
+            }
+        } catch (error) {
+            console.log('error from login', error)
         }
 
     }
