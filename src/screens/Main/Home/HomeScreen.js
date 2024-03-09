@@ -38,7 +38,7 @@ const HomeScreen = () => {
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View>
                     <Text style={{ ...FONTS.body2, color: COLORS.black }}>Welcome</Text>
-                    <Text style={{ ...FONTS.body4, color: COLORS.black }}>205534</Text>
+                    {/* <Text style={{ ...FONTS.body4, color: COLORS.black }}>205534</Text> */}
                 </View>
                 <Image source={icons.account} style={{ height: SIZES.h1 * 1.4, width: SIZES.h1 * 1.4, borderRadius: 100 }} />
             </View>

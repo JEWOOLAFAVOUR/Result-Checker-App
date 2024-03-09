@@ -54,10 +54,11 @@ const LoginScreen = () => {
             <Text style={{ ...FONTS.body4, color: COLORS.black, textAlign: 'center', marginHorizontal: SIZES.h1 }}>This app will be used for the purpose of checkingonly your result</Text>
             {/* INPUT */}
             <View style={{ marginTop: SIZES.h3 }}>
-                <FormInput title="Matric Number" iconName={icons.mail} placeholder="Matric Number" value={matricNumber} setValue={setMatricNumber} />
+                <FormInput keyboardType={'numeric'} title="Matric Number" iconName={icons.mail} placeholder="Matric Number" value={matricNumber} setValue={setMatricNumber} />
                 <FormInput title="Password" iconName={icons.padlock} placeholder="Password" value={password} setValue={setPassword} />
             </View>
             <FormButton title="LOGIN" onPress={() => handleSubmit()} />
+
 
             <View style={{ marginTop: SIZES.h1 * 1.4, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ ...FONTS.body4, color: COLORS.primary }}>School Portal?</Text>
